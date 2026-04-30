@@ -381,3 +381,9 @@ a:focus, button:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+
+.wakatime img{
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
