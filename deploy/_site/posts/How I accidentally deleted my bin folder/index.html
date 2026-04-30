@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    
+    
+    <meta charset="utf-8" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="techical stuff for techical people" />
+    <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/" class="home-link">meowcat&#39;s blog</a>
+      <nav>
+      <a href="/about">About</a>
+      </nav>
+    </header>
+    <main>
+    
+    
+  
+    
+
+
+<div class="wrapper post">
+  <div>
+    
+    <h1 class='postTitle'>How I accidentally deleted my bin folder</h1>
+    
+    
+    <p>I accidentally deleted the whole of my bin folder. If you don't know much about Linux, know lots of system files live here,
+including bash, DE's, X11 and Wayland, among other things.</p>
+<p>I didn't check the command I was running for syntax errors, and nuked my system.</p>
+<h2>OverlayFS</h2>
+<p>Overlayed Filesystems is what my Linux distro of choice uses. My etc/ directory had become full, and I needed to install TeX.
+The command I ran was &quot;sudo rm -rf /etc/*&quot;. I assumed this was the <strong>overlayed FS</strong> and not the main partition, but I was wrong.
+I got hit with &quot;sudo: you do not exist in the passwd database&quot; a few minutes later. cooked.</p>
+<h2>What I did wrong</h2>
+<p>Let's break down the command I ran. &quot;sudo&quot; is to run the rest of the command as root. This is normal, as I need permissions to operate in etc/.
+The next command &quot;rm&quot; with the flags &quot;-rf&quot; removes the passed file, and &quot;-rf&quot; is to force remove. I had passed &quot;/etc/<em>&quot;, &quot;/etc/&quot; being the directory, and &quot;</em>&quot; being the files (all.)</p>
+<p>What I didn't realise is that I had not passed in the <strong>overlayFS</strong>, thus nuking my system.</p>
+<h2>Conclusion</h2>
+<p>Don't wildcard stuff.</p>
+
+    <div class="controls">
+    
+    
+      <p>
+        <strong>Previous</strong>: 
+        <a class="previous" href="/posts/block-day1/">I have 45 days to find an exploit...</a>
+      </p>
+    
+    
+      <p>
+        <strong>Next</strong>: 
+        <a class="next" href="/posts/opening/">opening</a>
+      </p>
+    
+    </div>
+  </div>
+</div>
+
+    
+    </main>
+    <footer class="footer">
+    <div>
+      <a class="remix" href="meowcat.site">meowcat.site</a>
+    </div>
+    </footer>
+   
+  </body>
+</html>
