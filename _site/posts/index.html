@@ -2,18 +2,17 @@
 <html lang="en">
   <head>
     
-    {# This is the base template for the site–other templates extend this one #}
+    
     
     <meta charset="utf-8" />
     <link rel="icon" href="https://glitch.com/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="{{ metadata.description }}" />
+    <meta name="description" content="NullPointerException" />
     <link rel="stylesheet" type="text/css" href="/assets/style.css" />
   </head>
   <body>
     <header>
-      <a href="/" class="home-link">{{ metadata.title }}</a>
-      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+      <a href="/" class="home-link">meowcat.site</a>
       <nav>
       <a href="/about">About</a>
       <a href="/projects/">Projects</a>
@@ -21,9 +20,20 @@
     </header>
     <main>
     
-    {# Page or post content will appear here #}
+    
   
-    {{ content | safe }}
+    
+
+
+<div class="wrapper home">
+  <div class="content">
+    <h1>Posts</h1>
+<p>Write something about your posts. Or don't!</p>
+
+    <ul><li>04 Jun 2028 — <a href='/posts/Why wordpress didn&#39;t work/'>Why Wordpress didn&#39;t work.</a></li><li>16 Dec 2025 — <a href='/posts/How I accidentally deleted my bin folder/'>How I accidentally deleted my bin folder</a></li><li>15 Dec 2025 — <a href='/posts/opening/'>opening</a></li></ul>
+  </div>
+</div>
+
     
     </main>
     <footer class="footer">

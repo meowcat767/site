@@ -3,7 +3,14 @@ layout: base.njk
 title: Projects
 ---
 
+{% from "components/project-card.njk" import card %}
+
 <h1>{{ title }}</h1>
 
 <p>This is a list of projects I have made/am actively working on.</p>
 
+<div class="project-grid">
+    {% for project in collections.projects %}
+        {{ card(project) }}
+    {% endfor %}
+</div>
