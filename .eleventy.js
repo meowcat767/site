@@ -60,7 +60,8 @@ module.exports = function (eleventyConfig) {
     htmlTemplateEngine: "njk",
     dir: {
       input: "source",
-      includes: "_layouts",
+      includes: "_includes",
+      layouts: "_layouts",
       data: "_data",
       output: "_site",
     },
