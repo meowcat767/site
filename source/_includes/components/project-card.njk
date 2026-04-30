@@ -1,0 +1,12 @@
+{% macro card(project) %}
+
+<article class="project-card">
+    <h2>
+        <a href="{{ project.url }}">{{ project.data.title }}</a>
+    </h2>
+
+    {% if project.data.description %}
+        <p>{{ project.data.description }}</p>
+    {% endif %}
+</article>
+{% endmacro %}
