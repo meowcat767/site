@@ -4,11 +4,3 @@ title: Portfolio
 ---
 
 <h1>{{ title }}</h1>
-
-{% from "components/portfolio-card.njk" import portcard %}
-
-<div class="project-grid">
-    {% for project in collections.portfolio %}
-        {{ portcard(project) }}
-    {% endfor %}
-</div>

@@ -55,9 +55,9 @@ module.exports = function (eleventyConfig) {
      return coll;
    });
 
-   // Build the collection of portfolio projects
-   eleventyConfig.addCollection("portfolio", function (collection) {
-     /* The portfolio collection includes all projects that list 'projects' in the front matter 'tags'
+   // Build the collection of projects
+   eleventyConfig.addCollection("projects", function (collection) {
+     /* The projects collection includes all projects that list 'projects' in the front matter 'tags'
           - https://www.11ty.dev/docs/collections/
        */
      return collection.getFilteredByTag("projects");
