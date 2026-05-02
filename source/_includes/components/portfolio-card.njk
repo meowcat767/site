@@ -1,0 +1,16 @@
+{% macro portcard(project) %}
+
+    <article class="project-card">
+        <h2>
+            <a href="{{ project.url }}">{{ project.data.title }}</a>
+        </h2>
+
+        <img src="{{ project.data.image }}" alt="{{ project.data.title }}">
+
+        {% if project.data.description %}
+            <p>{{ project.data.description }}</p>
+            <p>{{ project.data.date }}</p>
+            <p>{{ project.data.lang }}</p>
+        {% endif %}
+    </article>
+{% endmacro %}
