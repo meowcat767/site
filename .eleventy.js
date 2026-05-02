@@ -33,27 +33,35 @@ module.exports = function (eleventyConfig) {
     );
   });
 
-  // Build the collection of posts to list in the site
-  eleventyConfig.addCollection("posts", function (collection) {
-    /* The posts collection includes all posts that list 'posts' in the front matter 'tags'
-         - https://www.11ty.dev/docs/collections/
-      */
+   // Build the collection of posts to list in the site
+   eleventyConfig.addCollection("posts", function (collection) {
+     /* The posts collection includes all posts that list 'posts' in the front matter 'tags'
+          - https://www.11ty.dev/docs/collections/
+       */
 
-    const coll = collection
-      .getFilteredByTag("posts")
-      .sort((a, b) => b.data.date - a.data.date);
+     const coll = collection
+       .getFilteredByTag("posts")
+       .sort((a, b) => b.data.date - a.data.date);
 
-    // Adds {{ prevPost.url }} {{ prevPost.data.title }}, etc, to our njks templates
-    for (let i = 0; i < coll.length; i++) {
-      const prevPost = coll[i - 1];
-      const nextPost = coll[i + 1];
+     // Adds {{ prevPost.url }} {{ prevPost.data.title }}, etc, to our njks templates
+     for (let i = 0; i < coll.length; i++) {
+       const prevPost = coll[i - 1];
+       const nextPost = coll[i + 1];
 
-      coll[i].data["prevPost"] = prevPost;
-      coll[i].data["nextPost"] = nextPost;
-    }
+       coll[i].data["prevPost"] = prevPost;
+       coll[i].data["nextPost"] = nextPost;
+     }
 
-    return coll;
-  });
+     return coll;
+   });
+
+   // Build the collection of portfolio projects
+   eleventyConfig.addCollection("portfolio", function (collection) {
+     /* The portfolio collection includes all projects that list 'projects' in the front matter 'tags'
+          - https://www.11ty.dev/docs/collections/
+       */
+     return collection.getFilteredByTag("projects");
+   });
 
   return {
     markdownTemplateEngine: "njk",

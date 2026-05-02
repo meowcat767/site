@@ -1,7 +1,7 @@
 ---
 title: Why Wordpress didn't work.
 description: this is why 11ty is better
-date: 2026-30-04
+date: 2026-04-30
 tags:
   - posts
 layout: post.njk
