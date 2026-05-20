@@ -259,4 +259,6 @@ a.remix:hover {
     width: 100%;
     text-align: center;
   }
+
+  cursor: url("assets/cursor/Wii Cursor.cur"), pointer;
 }
