@@ -1,16 +1,45 @@
 ---
 layout: base.njk
 title: Projects
+templateClass: tmpl-projects
 ---
 
-{% from "components/project-card.njk" import card %}
+<div class="wrapper projects-management">
+  <div class="content">
 
-<h1>{{ title }}</h1>
+    <div class="wii-management-header">
+      <h2>Save Data / {{ title }}</h2>
+      <p>This is a list of projects I have made/am actively working on.</p>
+    </div>
 
-<p>This is a list of projects I have made/am actively working on.</p>
+    <div class="wii-management-grid">
 
-<div class="project-grid">
-    {% for project in collections.projects %}
-        {{ card(project) }}
-    {% endfor %}
+      {# Loop through your actual Eleventy projects collection #}
+      {% for project in collections.projects %}
+        <a href="{{ project.url }}" class="wii-grid-block">
+          <div class="block-icon">📁</div>
+          <span class="block-title">{{ project.data.title }}</span>
+          {% if project.data.description %}
+            <span class="block-desc" hidden>{{ project.data.description }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+
+      {# Classic Wii Realism: Pad out the screen with empty block slots if your portfolio is small #}
+      {% set totalItems = collections.projects.length %}
+      {% if totalItems < 6 %}
+        {% for i in range(totalItems, 6) %}
+          <div class="wii-grid-block empty">
+            <span class="block-title">Unused Block</span>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+    <div class="wii-management-footer">
+      <a href="/" class="wii-btn-capsule wii-btn-back-link">戻る (Back)</a>
+    </div>
+
+  </div>
 </div>

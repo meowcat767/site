@@ -33,9 +33,11 @@
             <li>
               <button class="wii-btn-capsule wii-btn-trigger" id="wiiNavTrigger">Navigation</button>
             </li>
-
             <li>
               <button class="wii-btn-capsule wii-btn-trigger" id="wiiBlogTrigger">Blog</button>
+            </li>
+            <li>
+              <a href="/projects" class="wii-btn-capsule">Portfolio</a>
             </li>
           </ul>
         </div>
@@ -44,6 +46,7 @@
           <ul class="wii-list-page active">
             <li><a href="/about">About Me</a></li>
             <li><a href="/posts">View all posts archives</a></li>
+            <li><a href="/projects">Portfolio Link</a></li>
             <li>
               <button class="wii-btn-capsule wii-btn-back-link wii-back-btn">戻る (Back)</button>
             </li>
@@ -67,14 +70,14 @@
 <script>
   (function() {
     function initWiiMenu() {
-      let currentView = "main"; // "main", "nav", or "blog"
+      let currentView = "main";
       let blogPage = 1;
 
       const mainView = document.getElementById("wiiMainView");
       const navView = document.getElementById("wiiNavView");
       const blogView = document.getElementById("wiiBlogView");
 
-      const blogPages = blogView.querySelectorAll(".wii-list-page");
+      const blogPages = blogView ? blogView.querySelectorAll(".wii-list-page") : [];
       const totalBlogPages = blogPages.length;
 
       const prevBtn = document.getElementById("wiiPrevBtn");
@@ -84,8 +87,9 @@
       const blogTrigger = document.getElementById("wiiBlogTrigger");
       const backButtons = document.querySelectorAll(".wii-back-btn");
 
+      if (!mainView || !navView || !blogView) return;
+
       function updateMenuVisibility() {
-        // 1. Reset all view visibilities
         mainView.classList.remove("active");
         navView.classList.remove("active");
         blogView.classList.remove("active");
@@ -102,22 +106,17 @@
         }
         else if (currentView === "blog") {
           blogView.classList.add("active");
-
-          // Switch active status on the nested blog pagination cards
           blogPages.forEach(page => {
             page.classList.remove("active");
             if (parseInt(page.dataset.blogPage) === blogPage) {
               page.classList.add("active");
             }
           });
-
-          // Arrows only become active if you are in the blog view and have multiple pages
           prevBtn.disabled = (blogPage === 1);
-          nextBtn.disabled = (blogPage === totalBlogPages);
+          nextBtn.disabled = (blogPage === totalBlogPages || totalBlogPages === 0);
         }
       }
 
-      // Arrow Clicks (Only handle shifting pages within the Blog list view)
       prevBtn.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentView === "blog" && blogPage > 1) {
@@ -134,19 +133,21 @@
         }
       });
 
-      // Menu routing triggers
-      navTrigger.addEventListener("click", () => {
-        currentView = "nav";
-        updateMenuVisibility();
-      });
+      if (navTrigger) {
+        navTrigger.addEventListener("click", () => {
+          currentView = "nav";
+          updateMenuVisibility();
+        });
+      }
 
-      blogTrigger.addEventListener("click", () => {
-        currentView = "blog";
-        blogPage = 1;
-        updateMenuVisibility();
-      });
+      if (blogTrigger) {
+        blogTrigger.addEventListener("click", () => {
+          currentView = "blog";
+          blogPage = 1;
+          updateMenuVisibility();
+        });
+      }
 
-      // Global return mapping back to main screen dashboard
       backButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           currentView = "main";
@@ -154,7 +155,6 @@
         });
       });
 
-      // Run status configuration on setup
       updateMenuVisibility();
     }
 
