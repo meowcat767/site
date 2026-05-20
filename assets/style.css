@@ -255,33 +255,50 @@ a.remix:hover {
   outline: none;
 }
 
-/* ==========================================================================
-   WII DATA MANAGEMENT SECTIONS
-   ========================================================================== */
 .wii-management-header h2 {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-size: 1.5rem;
   color: #8c8c8c;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+.wii-management-header p {
+  color: #888888;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
 .wii-management-grid {
   display: grid;
-  /* Resolved: Removed the duplicated lines and typo '1xl' property */
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   width: 100%;
   margin-bottom: 40px;
 }
 
+/* Fixes the internal layout of the portfolio cards so they act as centered flex containers */
+.wii-grid-block {
+  display: flex !important;   /* Forces flex layout over block wrapper rules */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: 20px;
+  border-radius: 12px;
+  height: auto;
+}
+
 .wii-grid-block .block-icon {
+  display: block;
   font-size: 2.5rem;
   margin-bottom: 10px;
+  line-height: 1;
 }
 
 .wii-grid-block .block-title {
+  display: block;
   font-size: 1.1rem;
   text-align: center;
   white-space: nowrap;
@@ -297,6 +314,7 @@ a.remix:hover {
   color: #444444;
   cursor: default;
 }
+
 .wii-grid-block.empty .block-title {
   font-size: 0.9rem;
 }
@@ -305,40 +323,4 @@ a.remix:hover {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-
-.wii-management-footer .wii-btn-back-link {
-  max-width: 300px;
-}
-
-@media (max-width: 768px) {
-  html, body {
-    overflow-y: auto;
-    height: auto;
-  }
-  main {
-    padding: 20px 0;
-  }
-  .wii-system-menu {
-    gap: 15px;
-  }
-  .wii-menu-container {
-    min-height: auto;
-  }
-  .wii-list-page li a {
-    font-size: 1.1rem;
-    padding: 14px 15px;
-  }
-  header, .footer {
-    padding: 1rem 1.5rem;
-  }
-  a.remix {
-    padding: 12px 40px;
-    width: 100%;
-    text-align: center;
-  }
-  .wii-management-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
 }
