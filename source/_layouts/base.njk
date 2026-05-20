@@ -11,14 +11,10 @@
     <link rel="stylesheet" type="text/css" href="/assets/style.css" />
   </head>
   <body>
-    <header>
-      <a href="/" class="home-link">{{ metadata.title }}</a>
-      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-      <nav>
-      <a href="/about">About</a>
-      <a href="/projects/">Projects</a>
-      </nav>
-    </header>
+       <header>
+            <a href="/" class="home-link">{{ metadata.title or "meowcat's blog" }}</a>
+            <span class="version-meta">Ver. 1.0J</span>
+        </header>
     <main>
     
     {# Page or post content will appear here #}

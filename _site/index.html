@@ -11,40 +11,160 @@
     <link rel="stylesheet" type="text/css" href="/assets/style.css" />
   </head>
   <body>
-    <header>
-      <a href="/" class="home-link">meowcat.site</a>
-      <nav>
-      <a href="/about">About</a>
-      <a href="/projects/">Projects</a>
-      </nav>
-    </header>
+       <header>
+            <a href="/" class="home-link">meowcat.site</a>
+            <span class="version-meta">Ver. 1.0J</span>
+        </header>
     <main>
     
     
   
     
-
-
 <div class="wrapper home">
   <div class="content">
 
-<div class="illo-container">
-</div>
+    <div class="wii-system-menu" id="wiiMenuSystem">
+      <button class="wii-arrow wii-arrow-prev" id="wiiPrevBtn" aria-label="Previous Page" disabled></button>
 
-<h1>
-meowcat.site
-</h1>
+      <div class="wii-menu-container">
 
-    <h2>Welcome</h2>
-<p>welcome to generic blog #8023043.</p>
+        <div class="wii-menu-view active" id="wiiMainView">
+          <ul class="wii-list-page active" data-page="1">
+            <li>
+              <button class="wii-btn-capsule wii-btn-trigger" id="wiiNavTrigger">Navigation</button>
+            </li>
 
-    
-    
-    <ul><li><a href='/posts/Why wordpress didn&#39;t work/'>Why Wordpress didn&#39;t work.</a> – 30 Apr 2026</li><li><a href='/posts/How I accidentally deleted my bin folder/'>How I accidentally deleted my bin folder</a> – 16 Dec 2025</li><li><a href='/posts/opening/'>opening</a> – 15 Dec 2025</li><li><a href="/posts">View all posts</a></li>
-    </ul>
+            <li>
+              <button class="wii-btn-capsule wii-btn-trigger" id="wiiBlogTrigger">Blog</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="wii-menu-view" id="wiiNavView">
+          <ul class="wii-list-page active">
+            <li><a href="/about">About Me</a></li>
+            <li><a href="/posts">View all posts archives</a></li>
+            <li>
+              <button class="wii-btn-capsule wii-btn-back-link wii-back-btn">戻る (Back)</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="wii-menu-view" id="wiiBlogView">
+          <ul class="wii-list-page active" data-blog-page="1"><li><a href="/posts/Why wordpress didn&#39;t work/">Why Wordpress didn&#39;t work.</a></li><li><a href="/posts/How I accidentally deleted my bin folder/">How I accidentally deleted my bin folder</a></li><li><a href="/posts/opening/">opening</a></li><li>
+                <button class="wii-btn-capsule wii-btn-back-link wii-back-btn">戻る (Back)</button>
+              </li>
+              </ul></div>
+
+      </div>
+
+      <button class="wii-arrow wii-arrow-next" id="wiiNextBtn" aria-label="Next Page" disabled></button>
+    </div>
+
   </div>
 </div>
 
+<script>
+  (function() {
+    function initWiiMenu() {
+      let currentView = "main"; // "main", "nav", or "blog"
+      let blogPage = 1;
+
+      const mainView = document.getElementById("wiiMainView");
+      const navView = document.getElementById("wiiNavView");
+      const blogView = document.getElementById("wiiBlogView");
+
+      const blogPages = blogView.querySelectorAll(".wii-list-page");
+      const totalBlogPages = blogPages.length;
+
+      const prevBtn = document.getElementById("wiiPrevBtn");
+      const nextBtn = document.getElementById("wiiNextBtn");
+
+      const navTrigger = document.getElementById("wiiNavTrigger");
+      const blogTrigger = document.getElementById("wiiBlogTrigger");
+      const backButtons = document.querySelectorAll(".wii-back-btn");
+
+      function updateMenuVisibility() {
+        // 1. Reset all view visibilities
+        mainView.classList.remove("active");
+        navView.classList.remove("active");
+        blogView.classList.remove("active");
+
+        if (currentView === "main") {
+          mainView.classList.add("active");
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+        }
+        else if (currentView === "nav") {
+          navView.classList.add("active");
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+        }
+        else if (currentView === "blog") {
+          blogView.classList.add("active");
+
+          // Switch active status on the nested blog pagination cards
+          blogPages.forEach(page => {
+            page.classList.remove("active");
+            if (parseInt(page.dataset.blogPage) === blogPage) {
+              page.classList.add("active");
+            }
+          });
+
+          // Arrows only become active if you are in the blog view and have multiple pages
+          prevBtn.disabled = (blogPage === 1);
+          nextBtn.disabled = (blogPage === totalBlogPages);
+        }
+      }
+
+      // Arrow Clicks (Only handle shifting pages within the Blog list view)
+      prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentView === "blog" && blogPage > 1) {
+          blogPage--;
+          updateMenuVisibility();
+        }
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentView === "blog" && blogPage < totalBlogPages) {
+          blogPage++;
+          updateMenuVisibility();
+        }
+      });
+
+      // Menu routing triggers
+      navTrigger.addEventListener("click", () => {
+        currentView = "nav";
+        updateMenuVisibility();
+      });
+
+      blogTrigger.addEventListener("click", () => {
+        currentView = "blog";
+        blogPage = 1;
+        updateMenuVisibility();
+      });
+
+      // Global return mapping back to main screen dashboard
+      backButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          currentView = "main";
+          updateMenuVisibility();
+        });
+      });
+
+      // Run status configuration on setup
+      updateMenuVisibility();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initWiiMenu);
+    } else {
+      initWiiMenu();
+    }
+  })();
+</script>
     
     </main>
     <footer class="footer">
