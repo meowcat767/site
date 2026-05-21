@@ -1,6 +1,44 @@
 ---
 layout: base.njk
 title: Portfolio
+templateClass: tmpl-projects
 ---
 
-<h1>{{ title }}</h1>
+{% from "components/portfolio-card.njk" import portcard %}
+
+<div class="wrapper projects-management">
+  <div class="content">
+
+    <div class="wii-management-header">
+      <h2>Save Data / {{ title }}</h2>
+      <p>A selection of work I have made or am actively working on.</p>
+    </div>
+
+    <div class="wii-portfolio-grid">
+
+      {% for project in collections.projects %}
+        {{ portcard(project) }}
+      {% endfor %}
+
+      {% set totalItems = collections.projects.length %}
+      {% if totalItems < 6 %}
+        {% for i in range(totalItems, 6) %}
+          <div class="wii-portfolio-card wii-portfolio-card--empty">
+            <div class="wii-portfolio-card__banner">
+              <div class="wii-portfolio-card__img-placeholder">—</div>
+            </div>
+            <div class="wii-portfolio-card__body">
+              <span class="wii-portfolio-card__title">Unused Block</span>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+    <div class="wii-management-footer">
+      <a href="/" class="wii-btn-capsule wii-btn-back-link">戻る (Back)</a>
+    </div>
+
+  </div>
+</div>
