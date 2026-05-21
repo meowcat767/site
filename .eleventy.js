@@ -25,6 +25,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.setBrowserSyncConfig({ ghostMode: false });
+  eleventyConfig.setServerOptions({
+    port: 5000,
+    host: "0.0.0.0",
+    showAllHosts: true,
+  });
 
   // Filters let you modify the content https://www.11ty.dev/docs/filters/
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
