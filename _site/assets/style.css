@@ -325,6 +325,364 @@ a.remix:hover {
   width: 100%;
 }
 
+/* ── Wii Save Data screen ─────────────────────────────────── */
+
+.wii-savedata-shell {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Top bar: tabs + block count */
+.wii-savedata-topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 4px 0 0;
+  margin-bottom: 0;
+}
+
+.wii-savedata-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.wii-savedata-tab {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 22px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(to bottom, #4a9fd4 0%, #2b7ab8 100%);
+  color: #ffffff;
+  border: 2px solid #1e5a8a;
+  border-bottom: none;
+  letter-spacing: 0.03em;
+}
+
+.wii-savedata-tab.active {
+  background: linear-gradient(to bottom, #6ab8ea 0%, #3a93d0 100%);
+  color: #fff;
+  border-color: #2a7ab8;
+}
+
+.wii-savedata-blockcount {
+  font-size: 0.75rem;
+  color: #8ab8d8;
+  padding-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* Main grid area */
+.wii-savedata-grid {
+  background: linear-gradient(160deg, #0a1c2e 0%, #0d2238 60%, #071828 100%);
+  border: 3px solid #1a3a58;
+  border-radius: 0 8px 8px 8px;
+  padding: 18px 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  box-shadow: inset 0 2px 18px rgba(0,0,0,0.6), 0 4px 24px rgba(0,0,0,0.5);
+}
+
+/* Individual slot */
+.wii-slot {
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 6px 7px;
+  cursor: default;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.wii-slot--empty {
+  background: linear-gradient(160deg, #0e2438 0%, #0b1e30 100%);
+  border: 2px solid #122030;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.wii-slot--filled {
+  background: linear-gradient(160deg, #132840 0%, #0e2035 100%);
+  border: 2px solid #1e4060;
+  box-shadow: inset 0 0 0 1px #2a5070, inset 0 2px 8px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: border-color 0.1s, box-shadow 0.1s, transform 0.08s;
+}
+
+.wii-slot--filled:hover,
+.wii-slot--filled:focus {
+  border-color: var(--color-wii-blue);
+  box-shadow: inset 0 0 0 1px var(--color-wii-blue), 0 0 14px rgba(92, 187, 242, 0.55);
+  transform: scale(1.04);
+  outline: none;
+}
+
+/* Thumbnail inside slot */
+.wii-slot__thumb {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  background: #0a1828;
+}
+
+.wii-slot__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+.wii-slot__icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+}
+
+.wii-slot__label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #c8dff0;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* Bottom bar */
+.wii-savedata-bottombar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 2px 0;
+}
+
+.wii-savedata-back {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-dark-text);
+  background: linear-gradient(to bottom, #e8e8e8 0%, #c8c8c8 100%);
+  border: 2px solid #909090;
+  border-radius: 50px;
+  padding: 8px 36px;
+  box-shadow: inset 0 0 0 3px #d8d8d8;
+  transition: background 0.08s, box-shadow 0.08s;
+}
+
+.wii-savedata-back:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #dedede 100%);
+  box-shadow: inset 0 0 0 3px #ffffff, 0 0 10px #ffffff;
+}
+
+/* ── Modal overlay ─────────────────────────────────────────── */
+
+.wii-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 40, 55, 0.78);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.wii-modal-overlay[hidden] {
+  display: none !important;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.wii-modal {
+  background: linear-gradient(160deg, #d8dfe8 0%, #c2ccd8 100%);
+  border: 3px solid #8eaac4;
+  border-radius: 14px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
+  display: flex;
+  gap: 0;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.wii-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #6a8099;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 50%;
+  transition: color 0.1s, background 0.1s;
+  z-index: 1;
+}
+
+.wii-modal__close:hover {
+  color: #1a3050;
+  background: rgba(0,0,0,0.1);
+}
+
+/* Left art panel */
+.wii-modal__art {
+  width: 160px;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, #1a2e40 0%, #0d1e2e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid #8eaac4;
+  min-height: 200px;
+}
+
+.wii-modal__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wii-modal__art-placeholder {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: #3a6080;
+}
+
+/* Right info panel */
+.wii-modal__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px 18px;
+  gap: 10px;
+}
+
+.wii-modal__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wii-modal__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a2e40;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.wii-modal__badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.wii-modal__badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 7px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.wii-modal__badge--lang {
+  background: #2a7ab8;
+  color: #ffffff;
+}
+
+.wii-modal__badge--date {
+  background: rgba(0,0,0,0.12);
+  color: #3a5060;
+}
+
+.wii-modal__badge[hidden] {
+  display: none !important;
+}
+
+.wii-modal__desc {
+  font-size: 0.82rem;
+  color: #3a5060;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+/* Action buttons */
+.wii-modal__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.wii-modal__btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 10px 8px;
+  border-radius: 50px;
+  border: 2px solid #909090;
+  cursor: pointer;
+  transition: box-shadow 0.08s, background 0.08s, transform 0.06s;
+}
+
+.wii-modal__btn--primary {
+  background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 40%, #c8c8c8 100%);
+  color: var(--color-dark-text);
+  box-shadow: inset 0 0 0 3px var(--color-wii-blue);
+  border-color: #909090;
+}
+
+.wii-modal__btn--primary:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 40%, #d8d8d8 100%);
+  box-shadow: inset 0 0 0 3px var(--color-wii-blue-hover), 0 0 12px var(--color-wii-blue-hover);
+  transform: scale(1.02);
+}
+
+.wii-modal__btn--cancel {
+  background: linear-gradient(to bottom, #d8d8d8 0%, #b8b8b8 100%);
+  color: var(--color-dark-text);
+  box-shadow: inset 0 0 0 3px #a0a0a0;
+  border-color: #808080;
+}
+
+.wii-modal__btn--cancel:hover {
+  background: linear-gradient(to bottom, #e8e8e8 0%, #c8c8c8 100%);
+  box-shadow: inset 0 0 0 3px #b8b8b8;
+}
+
+/* ── Portfolio card grid (legacy — kept for portcard macro) ── */
 /* Portfolio card grid */
 .wii-portfolio-grid {
   display: grid;
