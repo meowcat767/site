@@ -20,69 +20,175 @@
     
   
     
-<div class="wrapper projects-management">
-  <div class="content">
+<div class="wii-savedata-shell">
 
-    <div class="wii-management-header">
-      <h2>Save Data / Projects</h2>
-      <p>This is a list of projects I have made/am actively working on.</p>
+  <div class="wii-savedata-topbar">
+    <div class="wii-savedata-tabs">
+      <span class="wii-savedata-tab active">Memory Card A</span>
     </div>
+    <span class="wii-savedata-blockcount">Blocks Used: 3</span>
+  </div>
 
-    <div class="wii-management-grid">
+  <div class="wii-savedata-grid" id="savegrid">
 
-      
-      
-        <a href="/portfolio/mr/" class="wii-grid-block">
-          <div class="block-icon">📁</div>
-          <span class="block-title">mastertonroofing.com</span>
+    
+      <button class="wii-slot wii-slot--filled"
+        data-title="mastertonroofing.com"
+        data-desc="PHP based website for Masterton Roofing, Ltd"
+        data-lang="PHP"
+        data-date="2026"
+        data-url="/portfolio/mr/"
+        data-img="/assets/mr1.png">
+        <div class="wii-slot__thumb">
           
-            <span class="block-desc" hidden>PHP based website for Masterton Roofing, Ltd</span>
+            <img src="/assets/mr1.png" alt="mastertonroofing.com">
           
-        </a>
-      
-        <a href="/projects/libmeowcat/" class="wii-grid-block">
-          <div class="block-icon">📁</div>
-          <span class="block-title">libmeowcat</span>
+        </div>
+        <span class="wii-slot__label">mastertonroofing.com</span>
+      </button>
+    
+      <button class="wii-slot wii-slot--filled"
+        data-title="libmeowcat"
+        data-desc="Standard library for all my projects, written in Java + Kotlin."
+        data-lang=""
+        data-date=""
+        data-url="/projects/libmeowcat/"
+        data-img="">
+        <div class="wii-slot__thumb">
           
-            <span class="block-desc" hidden>Standard library for all my projects, written in Java + Kotlin.</span>
+            <span class="wii-slot__icon">📁</span>
           
-        </a>
-      
-        <a href="/projects/pkn/" class="wii-grid-block">
-          <div class="block-icon">📁</div>
-          <span class="block-title">Pickle Network Debugger</span>
+        </div>
+        <span class="wii-slot__label">libmeowcat</span>
+      </button>
+    
+      <button class="wii-slot wii-slot--filled"
+        data-title="Pickle Network Debugger"
+        data-desc="A network debugger and visualiser, written in Kotlin"
+        data-lang=""
+        data-date=""
+        data-url="/projects/pkn/"
+        data-img="">
+        <div class="wii-slot__thumb">
           
-            <span class="block-desc" hidden>A network debugger and visualiser, written in Kotlin</span>
+            <span class="wii-slot__icon">📁</span>
           
-        </a>
-      
+        </div>
+        <span class="wii-slot__label">Pickle Network Debugger</span>
+      </button>
+    
 
+    
+    
       
+        <div class="wii-slot wii-slot--empty"></div>
       
+        <div class="wii-slot wii-slot--empty"></div>
       
-        
-          <div class="wii-grid-block empty">
-            <span class="block-title">Unused Block</span>
-          </div>
-        
-          <div class="wii-grid-block empty">
-            <span class="block-title">Unused Block</span>
-          </div>
-        
-          <div class="wii-grid-block empty">
-            <span class="block-title">Unused Block</span>
-          </div>
-        
+        <div class="wii-slot wii-slot--empty"></div>
       
-
-    </div>
-
-    <div class="wii-management-footer">
-      <a href="/" class="wii-btn-capsule wii-btn-back-link">戻る (Back)</a>
-    </div>
+        <div class="wii-slot wii-slot--empty"></div>
+      
+        <div class="wii-slot wii-slot--empty"></div>
+      
+        <div class="wii-slot wii-slot--empty"></div>
+      
+        <div class="wii-slot wii-slot--empty"></div>
+      
+        <div class="wii-slot wii-slot--empty"></div>
+      
+        <div class="wii-slot wii-slot--empty"></div>
+      
+    
 
   </div>
+
+  <div class="wii-savedata-bottombar">
+    <a href="/" class="wii-savedata-back">Back</a>
+  </div>
+
 </div>
+
+<!-- Detail modal -->
+<div class="wii-modal-overlay" id="wiiModal" hidden>
+  <div class="wii-modal" role="dialog" aria-modal="true">
+    <button class="wii-modal__close" id="wiiModalClose" aria-label="Close">✕</button>
+    <div class="wii-modal__art">
+      <img id="wiiModalImg" src="" alt="">
+      <div class="wii-modal__art-placeholder" id="wiiModalPlaceholder">📁</div>
+    </div>
+    <div class="wii-modal__info">
+      <div class="wii-modal__header">
+        <h2 class="wii-modal__title" id="wiiModalTitle"></h2>
+        <div class="wii-modal__badges">
+          <span class="wii-modal__badge wii-modal__badge--lang" id="wiiModalLang"></span>
+          <span class="wii-modal__badge wii-modal__badge--date" id="wiiModalDate"></span>
+        </div>
+      </div>
+      <p class="wii-modal__desc" id="wiiModalDesc"></p>
+      <div class="wii-modal__actions">
+        <a class="wii-modal__btn wii-modal__btn--primary" id="wiiModalLink" href="#">View Project</a>
+        <button class="wii-modal__btn wii-modal__btn--cancel" id="wiiModalCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const modal     = document.getElementById('wiiModal');
+  const closeBtn  = document.getElementById('wiiModalClose');
+  const cancelBtn = document.getElementById('wiiModalCancel');
+  const img       = document.getElementById('wiiModalImg');
+  const placeholder = document.getElementById('wiiModalPlaceholder');
+  const titleEl   = document.getElementById('wiiModalTitle');
+  const langEl    = document.getElementById('wiiModalLang');
+  const dateEl    = document.getElementById('wiiModalDate');
+  const descEl    = document.getElementById('wiiModalDesc');
+  const linkEl    = document.getElementById('wiiModalLink');
+
+  function openModal(slot) {
+    const d = slot.dataset;
+    titleEl.textContent = d.title || '';
+    descEl.textContent  = d.desc  || '';
+    langEl.textContent  = d.lang  || '';
+    dateEl.textContent  = d.date  || '';
+    linkEl.href         = d.url   || '#';
+
+    langEl.hidden = !d.lang;
+    dateEl.hidden = !d.date;
+
+    if (d.img) {
+      img.src = d.img;
+      img.alt = d.title;
+      img.hidden = false;
+      placeholder.hidden = true;
+    } else {
+      img.hidden = true;
+      placeholder.hidden = false;
+    }
+
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    cancelBtn.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.wii-slot--filled').forEach(slot => {
+    slot.addEventListener('click', () => openModal(slot));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+
     
     </main>
     <footer class="footer">
