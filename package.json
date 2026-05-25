@@ -4,14 +4,15 @@
   "description": "An Eleventy blog you can publish to Fastly for free.",
   "scripts": {
     "start": "eleventy --serve",
-    "build":"eleventy"
+    "build": "eleventy"
   },
   "dependencies": {
     "luxon": "^3.6.1"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-navigation": "^0.3.5"
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "eslint": "^10.4.0"
   },
   "license": "MIT"
 }

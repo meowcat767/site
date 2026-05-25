@@ -8,7 +8,7 @@ templateClass: tmpl-projects
 
   <div class="wii-savedata-topbar">
     <div class="wii-savedata-tabs">
-      <span class="wii-savedata-tab active">Memory Card A</span>
+      <span class="wii-savedata-tab active">SD Card</span>
     </div>
     <span class="wii-savedata-blockcount">Blocks Used: {{ collections.projects.length }}</span>
   </div>
@@ -27,7 +27,7 @@ templateClass: tmpl-projects
           {% if project.data.image %}
             <img src="/assets/{{ project.data.image }}" alt="{{ project.data.title }}">
           {% else %}
-            <span class="wii-slot__icon">📁</span>
+            <span class="wii-slot__icon">?</span>
           {% endif %}
         </div>
         <span class="wii-slot__label">{{ project.data.title }}</span>
