@@ -1,0 +1,37 @@
+---
+title: "Developing a game in Source - Part 1"
+pubDate: 2026-05-25
+description: "Hammer+++ when?"
+---
+
+### So, what is Source?
+
+Source (2013 base if you want to be exact (and even more MapBase)) is a game engine developed Valve. It powers iconic titles, such as Half-Life 2, Portal and Portal 2.
+The SDK is open for people who want to make mods... so lets get into that.
+
+### Making a mod: my plan
+My plan is a game that runs on top of the *Source 2013 Singleplayer Base* (Half-Life 2). Well, technically, you *don't* need a copy of Half-Life 2 since I pack the
+VPK (Valve PacK) file for Half-Life 2, but in most cases, Steam will refuse to boot the mod if you don't own it.
+
+My game is called PATCHBAY; It is set in an old Aperture Science facility under City 17. I won't spoil the story, but just know that is the base.
+
+### The pain of Valve's toolset
+At the core of the developer experience, you have Valve Hammer. Hammer is where the maps come together; It compiles VMF (Valve Map Format) to BSP (Binary Space Partitioning).
+Hammer is bundled with **all** source games. Be it Garry's Mod, Portal 2 or Half Life: Source.
+
+Hammer will be your best friend and worst enemy at times. Most of the time it will be your worst enemy.
+
+In MapBase (what I have forked my branch from), `env_fade` had been marked "OBSELETE!"
+<img src="OBSELETE!.webp" />
+
+This means `env_fade` **did not exist**. I am still stumped on how to implement my "wakeup" animation.
+
+
+### Conclusion
+
+Source is great. Hammer is not.
+
+See you tomorrow for the next update!
+
+-meowcat767
+
