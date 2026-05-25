@@ -13,9 +13,10 @@ const { title = "meowcat767"} = Astro.props;
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name = "viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
 <div class="site-wrapper">
@@ -24,16 +25,16 @@ const { title = "meowcat767"} = Astro.props;
         <aside class="left-sidebar">
             <Sidebar />
         </aside>
-    </div>
 
     <main class="center-constant">
-        <slot></slot>
+        <slot />
     </main>
 
-    <aside class="right-sidebar">
-        <RightPanel />
-    </aside>
+        <aside class="right-sidebar">
+            <RightPanel />
+        </aside>
+    </div>
+    <Footer />
 </div>
-<Footer />
 </body>
 </html>

@@ -1,0 +1,83 @@
+---
+
+---
+<header class="site-header">
+    <div class="header-content">
+        <div class="mascot-wrapper">
+            <img src="/kirby.png" alt="Kirby" class="header-mascot" />
+        </div>
+
+        <div class="title-block">
+            <h1>meowcat767's Website</h1>
+            <p class="subtitle">Now powered by Astro!!!</p>
+        </div>
+    </div>
+</header>
+
+<style>
+    .site-header {
+        /* Rich glass-like gradient fill matching classic early web UI */
+        background: linear-gradient(to bottom, #598bf7, #245cd1);
+        border: 3px solid #ffffff;
+        border-top: none; /* Keeps it flush against the top viewport edge */
+        border-radius: 0 0 24px 24px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        padding: 10px 20px;
+        position: relative;
+        overflow: visible; /* Allows Kirby's feet/star to hang down if needed */
+    }
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        gap: 15px;
+    }
+
+    .mascot-wrapper {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-mascot {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .title-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .title-block h1 {
+        color: #ffffff;
+        font-family: 'Arial Black', sans-serif; /* Thick web-safe retro font choice */
+        font-size: 2.2rem;
+        margin: 0;
+        line-height: 1.1;
+        text-shadow: 2px 2px 0px #163a8a; /* Clean retro 2D drop shadow */
+    }
+
+    .subtitle {
+        color: #e0ebff;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 1.05rem;
+        margin: 2px 0 0 2px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Compact screens styling adjustments */
+    @media (max-width: 480px) {
+        .title-block h1 { font-size: 1.6rem; }
+        .subtitle { font-size: 0.9rem; }
+        .mascot-wrapper { width: 50px; height: 50px; }
+    }
+</style>

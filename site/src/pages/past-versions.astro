@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Past Versions - Daniele's Website">
+	<div class="content-box">
+		<div class="box-header">Past Versions</div>
+		<div class="box-body">
+			<p>Here is a history of the various versions of this website since its inception in 2022.</p>
+            
+            <div class="version-entry">
+                <h3>Version 1.0 (2022)</h3>
+                <p>The original version, hosted on Neocities. It was a simple HTML/CSS site with a very basic design.</p>
+            </div>
+
+            <div class="version-entry">
+                <h3>Version 2.0 (2024)</h3>
+                <p>Redesigned with a focus on Frutiger Aero aesthetics. Introduced the sidebar and mascot characters.</p>
+            </div>
+
+            <div class="version-entry">
+                <h3>Version 3.0 (2026 - Current)</h3>
+                <p>Migrated to Astro for better performance and component-based development. Optimized for modern browsers while maintaining the retro look.</p>
+            </div>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.content-box {
+		background-color: #a4c2f4;
+		border: 2px solid #5b92f4;
+		border-radius: 8px;
+		margin-bottom: 15px;
+		overflow: hidden;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+	}
+
+	.box-header {
+		background: linear-gradient(to bottom, #72a3f7, #3b82f6);
+		color: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		text-align: center;
+		border-bottom: 2px solid #5b92f4;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	}
+
+	.box-body {
+		padding: 10px;
+        color: #1e3c82;
+        line-height: 1.5;
+	}
+
+    .version-entry {
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px solid #5b92f4;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .version-entry h3 {
+        margin: 0 0 5px 0;
+        font-size: 1.1rem;
+        color: #0b1d4a;
+    }
+
+    .version-entry p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+</style>

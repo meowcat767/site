@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Favorite Games - Daniele's Website">
+	<div class="content-box">
+		<div class="box-header">Favorite Games</div>
+		<div class="box-body">
+			<p>A collection of games that have had a significant impact on me or that I just really enjoy playing!</p>
+            
+            <div class="game-grid">
+                <div class="game-item">
+                    <div class="game-title">Super Mario Galaxy</div>
+                    <div class="game-desc">A masterpiece of platforming and creativity. The music and visuals are top-notch.</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-title">The Legend of Zelda: Twilight Princess</div>
+                    <div class="game-desc">My favorite Zelda game. I love the atmosphere and the wolf transformation mechanic.</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-title">Katamari Damacy</div>
+                    <div class="game-desc">Uniquely charming and addictive. The soundtrack is one of the best in gaming history.</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-title">Animal Crossing: Wild World</div>
+                    <div class="game-desc">Spent countless hours in my virtual town. It's the ultimate cozy game for me.</div>
+                </div>
+            </div>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.content-box {
+		background-color: #a4c2f4;
+		border: 2px solid #5b92f4;
+		border-radius: 8px;
+		margin-bottom: 15px;
+		overflow: hidden;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+	}
+
+	.box-header {
+		background: linear-gradient(to bottom, #72a3f7, #3b82f6);
+		color: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		text-align: center;
+		border-bottom: 2px solid #5b92f4;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	}
+
+	.box-body {
+		padding: 10px;
+        color: #1e3c82;
+        line-height: 1.5;
+	}
+
+    .game-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .game-item {
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid #5b92f4;
+        border-radius: 6px;
+        padding: 10px;
+    }
+
+    .game-title {
+        font-weight: bold;
+        color: #0b1d4a;
+        margin-bottom: 5px;
+    }
+
+    .game-desc {
+        font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+        .game-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
