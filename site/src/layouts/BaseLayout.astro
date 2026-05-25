@@ -1,0 +1,39 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import RightPanel from '../components/RightPanel.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { title = "meowcat767"} = Astro.props;
+
+---
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <title>{title}</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+<div class="site-wrapper">
+    <Header />
+    <div class="main-layout-grid">
+        <aside class="left-sidebar">
+            <Sidebar />
+        </aside>
+    </div>
+
+    <main class="center-constant">
+        <slot></slot>
+    </main>
+
+    <aside class="right-sidebar">
+        <RightPanel />
+    </aside>
+</div>
+<Footer />
+</body>
+</html>
