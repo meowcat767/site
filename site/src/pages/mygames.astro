@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="My Games - Daniele's Website">
+	<div class="content-box">
+		<div class="box-header">Games I Have Made</div>
+		<div class="box-body">
+			<p>Check out some of the small games and prototypes I've developed over the years!</p>
+            
+            <div class="my-game-list">
+                <div class="my-game-card">
+                    <div class="my-game-title">OrbitPi (2026)</div>
+                    <p>A simple timing based game where you enter the digits of Pi through timing!</p>
+                    <p><strong>Written in:</strong> Java, Kotlin</p>
+                    <p><strong>Engine:</strong> jMonkeyEngine 3</p>
+                </div>
+
+                <div class="my-game-card">
+                    <div class="my-game-title">Maz Ball (2026)</div>
+                    <p>Hide from Maz. Escape the maze.</p>
+                    <p><strong>Written in:</strong> JavaScript</p>
+                    <p><strong>Engine: </strong>PlayCanvas</p>
+                </div>
+
+                <div class="my-game-card">
+                    <div class="my-game-title">PATCHBAY (Work in Progress)</div>
+                    <p>A first-person puzzle game where you don't just push buttons—you physically rewire the environment's electrical and logic circuits.</p>
+                    <p><strong>Written in: </strong>C++</p>
+                    <p><strong>Engine: </strong>Source 2013</p>
+                </div>
+            </div>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.content-box {
+		background-color: #a4c2f4;
+		border: 2px solid #5b92f4;
+		border-radius: 8px;
+		margin-bottom: 15px;
+		overflow: hidden;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+	}
+
+	.box-header {
+		background: linear-gradient(to bottom, #72a3f7, #3b82f6);
+		color: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		text-align: center;
+		border-bottom: 2px solid #5b92f4;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	}
+
+	.box-body {
+		padding: 10px;
+        color: #1e3c82;
+        line-height: 1.5;
+	}
+
+    .my-game-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .my-game-card {
+        border-left: 4px solid #3b82f6;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .my-game-title {
+        font-weight: bold;
+        color: #0b1d4a;
+        margin-bottom: 5px;
+    }
+
+    .my-game-card p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+</style>

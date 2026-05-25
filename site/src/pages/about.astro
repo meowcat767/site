@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About Me - Daniele's Website">
+	<div class="content-box">
+		<div class="box-header">About Me</div>
+		<div class="box-body profile-section">
+            <div class="profile-info">
+                <p><strong>Name:</strong> Daniele (meowcat767)</p>
+                <p><strong>Hobbies:</strong> Web development, Retro gaming, Anime, Gardening (Terrariums)</p>
+                <p><strong>Favorite Style:</strong> Frutiger Aero, Skeuomorphism, Y2K</p>
+            </div>
+		</div>
+	</div>
+
+    <div class="content-box">
+        <div class="box-header">My Interests</div>
+        <div class="box-body">
+            <p>I've always been fascinated by the early web and the unique design languages that emerged during that time. This site is a tribute to the aesthetics of the mid-2000s, specifically the Frutiger Aero style characterized by gloss, transparency, and nature-inspired imagery.</p>
+            <p>In my free time, I enjoy working on small web projects, playing classic arcade games, and collecting posters of my favorite anime series.</p>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+	.content-box {
+		background-color: #a4c2f4;
+		border: 2px solid #5b92f4;
+		border-radius: 8px;
+		margin-bottom: 15px;
+		overflow: hidden;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+	}
+
+	.box-header {
+		background: linear-gradient(to bottom, #72a3f7, #3b82f6);
+		color: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		text-align: center;
+		border-bottom: 2px solid #5b92f4;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	}
+
+	.box-body {
+		padding: 10px;
+        color: #1e3c82;
+        line-height: 1.5;
+	}
+
+    .profile-info p {
+        margin: 5px 0;
+    }
+
+    .profile-info strong {
+        color: #0b1d4a;
+    }
+</style>

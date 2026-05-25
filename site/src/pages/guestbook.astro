@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Guestbook - Daniele's Website">
+	<div class="content-box">
+        <div class="box-header">My Guestbook</div>
+        <div class="box-body">
+            <div class="guestbook-container">
+                <iframe src="http://users4.smartgb.com/g/g.php?a=s&i=g44-83639-0d" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+            <div class="guestbook-credits">
+                <a href="http://www.smartgb.com" target="_blank"><img alt="Free Guestbook" src="http://extras4.smartgb.com/b/logo3_88_31.gif" width="88" height="31"></a>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+	.content-box {
+		background-color: #a4c2f4;
+		border: 2px solid #5b92f4;
+		border-radius: 8px;
+		margin-bottom: 15px;
+		overflow: hidden;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+	}
+
+	.box-header {
+		background: linear-gradient(to bottom, #72a3f7, #3b82f6);
+		color: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		text-align: center;
+		border-bottom: 2px solid #5b92f4;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	}
+
+	.box-body {
+		padding: 10px;
+        color: #1e3c82;
+        line-height: 1.5;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+	}
+
+    .guestbook-container {
+        background: white;
+        border-radius: 4px;
+        border: 1px solid #5b92f4;
+        overflow: hidden;
+    }
+
+    .guestbook-credits {
+        text-align: center;
+        padding-top: 5px;
+    }
+</style>
