@@ -3,7 +3,12 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	(a, b) => {
+		const dateDiff = b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+		if (dateDiff !== 0) return dateDiff;
+		// If dates are equal, sort by ID (usually filename) descending to ensure stable order
+		return b.id.localeCompare(a.id);
+	}
 );
 ---
 
