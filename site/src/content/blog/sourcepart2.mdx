@@ -1,0 +1,49 @@
+---
+title: "Developing a game in Source - Part 2"
+pubDate: 2026-06-2
+description: "Valve... why MDL... why???"
+---
+
+The Valve Source engine has its own model format, MDL. Valve MDL files are created with Valve StudioMDL, which compiles SMD and QC
+files into MDL.
+
+### What is a QC?
+
+A QC file is a language used to define how a 3D model should be processed by StudioMDL. 
+This is an example QC file:
+
+```
+$modelname	"props_sdk/myfirstmodel.mdl"
+$body mybody	"myfirstmodel-ref"
+
+$surfaceprop	combine_metal
+$cdmaterials	"models/props_sdk"
+
+$sequence idle	"myfirstmodel-ref" // no animation wanted, so re-using the reference mesh
+
+$collisionmodel	"myfirstmodel-phys" { $concave } // can be omitted if no collision is needed
+```
+
+This file is processed by StudioMDL to create the MDL file from the SMD. 
+
+
+### SMD?
+
+SMD is a file format exported from 3D software, for example Blender or Maya. This can't be processed by Source itself, 
+so it is compiled into a MDL. This adds the materials, the physics, sequences, etc.
+
+You can also use the Valve Face Poser to create sequences. 
+
+### What's wrong with this?
+
+This is a PAIN. You have to track thousands of QC and SMD files in Git, and keep them maintained.
+If you mess up in your QC, thats half an hour of debugging, to find you forgot a "$" or something. 
+
+My plan is to mod the Source engine to support gLTF files, so I don't have the mess of QC, SMD and MDL files.
+
+### Modding the Source engine for gLTF
+
+I have no idea how I am going to do this. Considering the engine currently only knows how to read MDL files, we can inject
+gLTF data maybe?
+
+I'll keep you updated on my plans.
