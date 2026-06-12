@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404! The cake is a lie!">
+  <div class="content-box">
+    <div class="box-header">404! The cake is a lie!</div>
+    <div class="box-body">
+      <em>
+        Now these points of data Make a beautiful line. <br /> And we're out of beta.
+        <br />
+        We're releasing on time. <br /> So I'm GLaD. I got burned. <br /> Think of
+        all the things we learned <br /> For the people who are Still alive.
+      </em>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .content-box {
+    background-color: #a4c2f4;
+    border: 2px solid #5b92f4;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .box-header {
+    background: linear-gradient(to bottom, #72a3f7, #3b82f6);
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #5b92f4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .box-body {
+    padding: 10px;
+    color: #1e3c82;
+    line-height: 1.5;
+  }
+
+  .game-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .game-item {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid #5b92f4;
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  .game-title {
+    font-weight: bold;
+    color: #0b1d4a;
+    margin-bottom: 5px;
+  }
+
+  .game-desc {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    .game-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
