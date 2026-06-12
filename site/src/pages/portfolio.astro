@@ -2,31 +2,21 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Favorite Games - meowcat767's Website">
+<BaseLayout title="Portfolio - meowcat767's website">
   <div class="content-box">
-    <div class="box-header">Favorite Games</div>
+    <div class="box-header">Portfolio</div>
     <div class="box-body">
-      <p>
-        A collection of games that have had a significant impact on me or that I
-        just really enjoy playing!
-      </p>
-
-      <div class="game-grid">
-        <div class="game-item">
-          <div class="game-title">Half-Life 2</div>
-          <div class="game-desc">"We don't go to Ravenholm..."</div>
-        </div>
-        <div class="game-item">
-          <div class="game-title">osu!</div>
-          <div class="game-desc">
-            My hand still hurts from Galaxy Collapse...
-          </div>
-        </div>
-        <div class="game-item">
-          <div class="game-title">Kerbal Space Program</div>
-          <div class="game-desc">
-            Jebediah Kerman is still orbiting Duna to this day
-          </div>
+      <p>This is a listing of websites/apps I have built for people/myself.</p>
+    </div>
+    <div class="port-grid">
+      <div class="port-item">
+        <div class="port-title">mastertonroofing.com</div>
+        <div class="port-desc">
+          A professional website written for Masterton Roofing in PHP.
+          <br />
+          Vist it at <a href="https://mastertonroofing.com"
+            >mastertonroofing.com</a
+          >
         </div>
       </div>
     </div>
@@ -59,32 +49,32 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     line-height: 1.5;
   }
 
-  .game-grid {
+  .port-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-top: 10px;
   }
 
-  .game-item {
+  .port-item {
     background: rgba(255, 255, 255, 0.4);
     border: 1px solid #5b92f4;
     border-radius: 6px;
     padding: 10px;
   }
 
-  .game-title {
+  .port-title {
     font-weight: bold;
     color: #0b1d4a;
     margin-bottom: 5px;
   }
 
-  .game-desc {
+  .port-desc {
     font-size: 0.85rem;
   }
 
   @media (max-width: 600px) {
-    .game-grid {
+    .port-grid {
       grid-template-columns: 1fr;
     }
   }
